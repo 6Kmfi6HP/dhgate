@@ -45,6 +45,8 @@ jobs:
         retention-days: 1  # Set the retention period for artifacts
 
   release:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     needs: build
     steps:
