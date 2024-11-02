@@ -134,14 +134,15 @@ class HtmlParser:
             else:
                 cleaned_html = ''
 
-            # Extract images
+            # Extract images and replace both 200x200 and 100x100 with 0x0
             images = tree.xpath('//ul[contains(@class, "masterMap_smallMapList")]/li/span/img/@src')
+            images = [re.sub(r'(?i)(?:200x200|100x100)', '0x0', img) for img in images]
             
             # Get the first image
             first_image = images[0] if images else ''
             
             return {
-                'first_image': first_image,  # Add first image URL
+                'first_image': first_image,
                 'images': ','.join(images),
                 'description': cleaned_html.strip() if cleaned_html else ''
             }

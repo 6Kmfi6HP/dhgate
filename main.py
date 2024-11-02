@@ -5,7 +5,6 @@ import webbrowser
 
 from spider_main import SpiderMain
 
-
 class MainWindows(tk.Tk):
     def __init__(self):
         super().__init__()  # 初始化基类
